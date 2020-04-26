@@ -34,6 +34,7 @@
     <ClInclude Include="src\Game_Engine\Log.h">
       <Filter>Game_Engine</Filter>
     </ClInclude>
+    <ClInclude Include="src\gepch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game_Engine\Application.cpp">
@@ -42,5 +43,6 @@
     <ClCompile Include="src\Game_Engine\Log.cpp">
       <Filter>Game_Engine</Filter>
     </ClCompile>
+    <ClCompile Include="src\gecph.cpp" />
   </ItemGroup>
 </Project>

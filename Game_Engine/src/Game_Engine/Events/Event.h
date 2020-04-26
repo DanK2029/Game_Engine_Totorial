@@ -2,9 +2,6 @@
 
 #include "Game_Engine/Core.h" // TODO: CHANGE TO Game_Engine/Core.h
 
-#include <string>
-#include <functional>
-
 namespace GameEngine {
 
 	// Events are currently blocking, meaning when an event occurs it 

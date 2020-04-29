@@ -4,10 +4,12 @@
 #include "Game_Engine/Events/ApplicationEvent.h"
 #include "Game_Engine/Log.h"
 
+#include <GLFW/glfw3.h>
+
 namespace GameEngine {
 
 	Application::Application() {
-
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 
 	Application::~Application() {
@@ -15,10 +17,13 @@ namespace GameEngine {
 	}
 
 	void Application::Run() {
-		WindowResizeEvent e(1200, 720);
-		GE_TRACE(e.ToString());
+		
 
-		while(true);
+		while (m_Running) {
+			glClearColor(1, 0, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+			m_Window->OnUpdate();
+		}
 	}
 
 }

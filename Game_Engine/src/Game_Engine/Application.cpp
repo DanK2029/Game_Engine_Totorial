@@ -4,7 +4,7 @@
 #include "Game_Engine/Events/ApplicationEvent.h"
 #include "Game_Engine/Log.h"
 
-#include <GLFW/glfw3.h>
+#include <Glad/glad.h>
 
 namespace GameEngine {
 

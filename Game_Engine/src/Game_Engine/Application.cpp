@@ -16,7 +16,7 @@ namespace GameEngine {
 
 	void Application::Run() {
 		WindowResizeEvent e(1200, 720);
-		GE_TRACE(e);
+		GE_TRACE(e.ToString());
 
 		while(true);
 	}

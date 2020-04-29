@@ -1,3 +1,6 @@
 [submodule "Game_Engine/vendor/spdlog"]
 	path = Game_Engine/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "Game_Engine/vendor/GLFW"]
+	path = Game_Engine/vendor/GLFW
+	url = https://github.com/TheCherno/glfw

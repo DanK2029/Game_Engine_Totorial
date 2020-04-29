@@ -31,8 +31,17 @@
     <ClInclude Include="src\Game_Engine\Events\Event.h">
       <Filter>Game_Engine\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game_Engine\Events\KeyEvent.h">
+      <Filter>Game_Engine\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Game_Engine\Events\MouseEvent.h">
       <Filter>Game_Engine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game_Engine\Layer.h">
+      <Filter>Game_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game_Engine\LayerStack.h">
+      <Filter>Game_Engine</Filter>
     </ClInclude>
     <ClInclude Include="src\Game_Engine\Log.h">
       <Filter>Game_Engine</Filter>
@@ -44,10 +53,15 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\gepch.h" />
-    <ClInclude Include="src\Game_Engine\Events\KeyEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game_Engine\Application.cpp">
+      <Filter>Game_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game_Engine\Layer.cpp">
+      <Filter>Game_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game_Engine\LayerStack.cpp">
       <Filter>Game_Engine</Filter>
     </ClCompile>
     <ClCompile Include="src\Game_Engine\Log.cpp">

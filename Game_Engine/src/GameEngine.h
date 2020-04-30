@@ -7,6 +7,8 @@
 #include "Game_Engine/Layer.h"
 #include "Game_Engine/Log.h"
 
+#include "Game_Engine/ImGui/ImGuiLayer.h"
+
 // --- Entry Point -----------------
 #include "Game_Engine/EntryPoint.h"
 // --- Entry Point -----------------

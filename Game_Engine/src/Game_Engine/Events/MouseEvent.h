@@ -4,9 +4,9 @@
 
 namespace GameEngine {
 
-	class GAME_ENGINE_API MouseMoveEvent : public Event {
+	class GAME_ENGINE_API MouseMovedEvent : public Event {
 	public:
-		MouseMoveEvent(float x, float y)
+		MouseMovedEvent(float x, float y)
 			: m_MouseX(x), m_MouseY(y) {}
 
 		inline float GetX() const { return m_MouseX; }
@@ -25,14 +25,14 @@ namespace GameEngine {
 		float m_MouseX, m_MouseY;
 	};
 
-	class GAME_ENGINE_API MouseScrollEvent : public Event {
+	class GAME_ENGINE_API MouseScrolledEvent : public Event {
 	public:
-		MouseScrollEvent(float xOffset, float yOffset)
+		MouseScrolledEvent(float xOffset, float yOffset)
 			: m_XOffset(xOffset), m_YOffset(yOffset) {
 		}
 
-		inline float GetX() const { return m_XOffset; }
-		inline float GetY() const { return m_YOffset; }
+		inline float GetXOffset() const { return m_XOffset; }
+		inline float GetYOffset() const { return m_YOffset; }
 
 		std::string ToString() const override {
 			std::stringstream ss;

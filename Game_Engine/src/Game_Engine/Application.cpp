@@ -60,7 +60,6 @@ namespace GameEngine {
 			for (Layer* layer : m_LayerStack) {
 				layer->OnUpdate();
 			}
-			
 
 			m_Window->OnUpdate();
 		}

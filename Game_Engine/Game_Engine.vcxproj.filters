@@ -7,6 +7,9 @@
     <Filter Include="Game_Engine\Events">
       <UniqueIdentifier>{B898B772-A47C-78C8-0DDD-721BF9DF624A}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game_Engine\ImGui">
+      <UniqueIdentifier>{7E179668-EA2D-94FE-33A5-1F209FFA6486}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
@@ -37,6 +40,15 @@
     <ClInclude Include="src\Game_Engine\Events\MouseEvent.h">
       <Filter>Game_Engine\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game_Engine\ImGui\ImGuiLayer.h">
+      <Filter>Game_Engine\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game_Engine\Input.h">
+      <Filter>Game_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game_Engine\KeyCodes.h">
+      <Filter>Game_Engine</Filter>
+    </ClInclude>
     <ClInclude Include="src\Game_Engine\Layer.h">
       <Filter>Game_Engine</Filter>
     </ClInclude>
@@ -46,25 +58,29 @@
     <ClInclude Include="src\Game_Engine\Log.h">
       <Filter>Game_Engine</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game_Engine\MouseButtonCodes.h">
+      <Filter>Game_Engine</Filter>
+    </ClInclude>
     <ClInclude Include="src\Game_Engine\Window.h">
       <Filter>Game_Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\gepch.h" />
-    <ClInclude Include="src\Game_Engine\ImGui\ImGuiLayer.h">
-      <Filter>Game_Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
-    <ClInclude Include="src\Game_Engine\Input.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
-    <ClInclude Include="src\Game_Engine\KeyCodes.h" />
-    <ClInclude Include="src\Game_Engine\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game_Engine\Application.cpp">
       <Filter>Game_Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game_Engine\ImGui\ImGuiBuild.cpp">
+      <Filter>Game_Engine\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game_Engine\ImGui\ImGuiLayer.cpp">
+      <Filter>Game_Engine\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Game_Engine\Layer.cpp">
       <Filter>Game_Engine</Filter>
@@ -75,14 +91,12 @@
     <ClCompile Include="src\Game_Engine\Log.cpp">
       <Filter>Game_Engine</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\gepch.cpp" />
-    <ClCompile Include="src\Game_Engine\ImGui\ImGuiLayer.cpp">
-      <Filter>Game_Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

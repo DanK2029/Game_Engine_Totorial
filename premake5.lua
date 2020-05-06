@@ -14,6 +14,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Game_Engine/vendor/GLFW/include"
 IncludeDir["Glad"] = "Game_Engine/vendor/Glad/include"
 IncludeDir["ImGui"] = "Game_Engine/vendor/imgui"
+IncludeDir["glm"] = "Game_Engine/vendor/glm"
 
 include "Game_Engine/vendor/GLFW"
 include "Game_Engine/vendor/GLAD"
@@ -40,7 +41,8 @@ project "Game_Engine"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links { 
@@ -91,11 +93,14 @@ location "Game_Engine"
 
 	includedirs {
 		"Game_Engine/vendor/spdlog/include",
-		"Game_Engine/src"
+		"Game_Engine/src",
+		"Game_Engine/vendor",
+		"%{IncludeDir.glm}"
 	}
 
 	links {
-		"Game_Engine"
+		"Game_Engine",
+		"ImGui"
 	}
 
 	filter "system:windows"

@@ -35,6 +35,7 @@ namespace GameEngine {
 
 	class GAME_ENGINE_API Event {
 		friend class EventDispatcher;
+
 	public:
 		bool m_Handled = false;
 
@@ -46,8 +47,6 @@ namespace GameEngine {
 		inline bool IsInCategory(EventCategory category) {
 			return GetCategoryFlags() & category;
 		}
-	protected:
-		
 	};
 
 	class EventDispatcher {

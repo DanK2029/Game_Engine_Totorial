@@ -13,5 +13,4 @@ namespace GameEngine {
 		virtual float GetMouseXImpl();
 		virtual float GetMouseYImpl();
 	};
-
 }

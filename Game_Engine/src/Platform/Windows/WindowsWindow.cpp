@@ -7,7 +7,6 @@
 
 #include <Glad/glad.h>
 
-
 namespace GameEngine {
 
 	static bool s_GLFWInitialized = false;
@@ -32,8 +31,6 @@ namespace GameEngine {
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
-
-		//GE_CORE_INFO("Creating Window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
 		if (!s_GLFWInitialized) {
 			// TODO: glfwTerminate on system shutdown
@@ -145,11 +142,10 @@ namespace GameEngine {
 	}
 
 	void WindowsWindow::SetVSync(bool enabled) {
-		if (enabled) {
+		if (enabled)
 			glfwSwapInterval(1);
-		} else {
+		 else
 			glfwSwapInterval(0);
-		}
 
 		m_Data.VSync = enabled;
 	}

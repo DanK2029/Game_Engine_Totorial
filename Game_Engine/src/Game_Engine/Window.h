@@ -39,5 +39,4 @@ namespace GameEngine {
 
 		static Window* Create(const WindowProps& props = WindowProps());
 	};
-
 }

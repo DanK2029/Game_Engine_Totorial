@@ -7,6 +7,8 @@
 #include "Events/Event.h"
 #include "Game_Engine/Events/ApplicationEvent.h"
 
+#include "Game_Engine/ImGui/ImGuiLayer.h"
+
 namespace GameEngine {
 
 	class GAME_ENGINE_API Application {
@@ -23,10 +25,12 @@ namespace GameEngine {
 
 		inline Window& GetWindow() { return *m_Window; }
 		inline static Application& Get() { return *s_Instance; }
+
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
@@ -36,5 +40,4 @@ namespace GameEngine {
 
 	// To be defined in CLIENT
 	Application* CreateApplication();
-
 }

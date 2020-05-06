@@ -24,5 +24,4 @@ namespace GameEngine {
 	private:
 		static Input* s_Instance;
 	};
-
 }

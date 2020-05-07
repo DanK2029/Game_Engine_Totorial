@@ -17,13 +17,15 @@ IncludeDir["ImGui"] = "Game_Engine/vendor/imgui"
 IncludeDir["glm"] = "Game_Engine/vendor/glm"
 
 include "Game_Engine/vendor/GLFW"
-include "Game_Engine/vendor/GLAD"
+include "Game_Engine/vendor/Glad"
 include "Game_Engine/vendor/imgui"
 
 project "Game_Engine"
 	location "Game_Engine"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -34,6 +36,10 @@ project "Game_Engine"
 	files {
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp"
+	}
+
+	defines {
+		"_CRT_SECURE_NO_WARNINGS"
 	}
 
 	includedirs {
@@ -53,7 +59,6 @@ project "Game_Engine"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines {
@@ -62,26 +67,24 @@ project "Game_Engine"
 			"GLFW_INCLUDE_NONE"
 		}
 
-		postbuildcommands {
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
-		}
-
 	filter "configurations:Debug"
 		defines "DEBUG"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "RELEASE"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "DIST"
-		optimize "On"
+		optimize "on"
 
 project "Sandbox"
-location "Game_Engine"
+	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -104,7 +107,6 @@ location "Game_Engine"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines {
@@ -113,12 +115,12 @@ location "Game_Engine"
 
 	filter "configurations:Debug"
 		defines "DEBUG"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "RELEASE"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "DIST"
-		optimize "On"
+		optimize "on"

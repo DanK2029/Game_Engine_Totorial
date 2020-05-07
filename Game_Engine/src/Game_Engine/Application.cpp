@@ -54,7 +54,7 @@ namespace GameEngine {
 	void Application::Run() {
 		
 		while (m_Running) {
-			glClearColor(0.33, 0.75, 1, 1);
+			glClearColor(0.33f, 0.75f, 1.0f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			for (Layer* layer : m_LayerStack) {

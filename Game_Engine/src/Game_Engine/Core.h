@@ -1,10 +1,14 @@
 #pragma once
 
 #ifdef PLATFORM_WINDOWS
-	#ifdef BUILD_DLL
-		#define GAME_ENGINE_API __declspec(dllexport)
+	#if GE_DYNAMIC_LINK
+		#ifdef BUILD_DLL
+			#define GAME_ENGINE_API __declspec(dllexport)
+		#else
+			#define GAME_ENGINE_API __declspec(dllimport)
+		#endif
 	#else
-		#define GAME_ENGINE_API __declspec(dllimport)
+		#define GAME_ENGINE_API
 	#endif
 #else
 	#error Game Engine only supports windows!

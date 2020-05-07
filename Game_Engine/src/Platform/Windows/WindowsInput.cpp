@@ -27,7 +27,7 @@ namespace GameEngine {
 		double xpos, ypos;
 		glfwGetCursorPos(window, &xpos, &ypos);
 
-		return std::pair<float, float>(xpos, ypos);
+		return std::pair<float, float>((float) xpos, (float) ypos);
 	}
 
 	float WindowsInput::GetMouseXImpl() {

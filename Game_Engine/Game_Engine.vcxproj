@@ -155,6 +155,8 @@
     <ClInclude Include="src\Game_Engine\LayerStack.h" />
     <ClInclude Include="src\Game_Engine\Log.h" />
     <ClInclude Include="src\Game_Engine\MouseButtonCodes.h" />
+    <ClInclude Include="src\Game_Engine\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Game_Engine\Window.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
@@ -167,6 +169,7 @@
     <ClCompile Include="src\Game_Engine\Layer.cpp" />
     <ClCompile Include="src\Game_Engine\LayerStack.cpp" />
     <ClCompile Include="src\Game_Engine\Log.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\gepch.cpp">

@@ -41,5 +41,4 @@ namespace GameEngine {
 
 		return y;
 	}
-
 }

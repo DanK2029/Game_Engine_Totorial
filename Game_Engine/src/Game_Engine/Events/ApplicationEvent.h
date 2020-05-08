@@ -6,6 +6,7 @@ namespace GameEngine {
 
 	class GAME_ENGINE_API WindowResizeEvent : public Event {
 	public:
+		WindowResizeEvent() {}
 		WindowResizeEvent(unsigned int width, unsigned int height)
 			: m_Width(width), m_Height(height) {}
 

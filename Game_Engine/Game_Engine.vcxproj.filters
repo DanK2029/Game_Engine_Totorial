@@ -73,6 +73,7 @@
     <ClInclude Include="src\gepch.h" />
     <ClInclude Include="src\Game_Engine\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Game_Engine\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game_Engine\Application.cpp">
@@ -101,5 +102,6 @@
     </ClCompile>
     <ClCompile Include="src\gepch.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Game_Engine\Renderer\Shader.cpp" />
   </ItemGroup>
 </Project>

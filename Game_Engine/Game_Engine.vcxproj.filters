@@ -74,6 +74,9 @@
     <ClInclude Include="src\Game_Engine\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Game_Engine\Renderer\Shader.h" />
+    <ClInclude Include="src\Game_Engine\Renderer\Buffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Game_Engine\Renderer\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game_Engine\Application.cpp">
@@ -103,5 +106,8 @@
     <ClCompile Include="src\gepch.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Game_Engine\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Game_Engine\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Game_Engine\Renderer\Renderer.cpp" />
   </ItemGroup>
 </Project>

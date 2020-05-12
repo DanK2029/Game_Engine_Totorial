@@ -23,6 +23,7 @@ namespace GameEngine {
 
 			case ShaderDataType::Bool:		return 1;
 		}
+
 		GE_CORE_ASSERT(false, "Unknown ShaderDataType!");
 		return 0;
 	}
@@ -37,7 +38,7 @@ namespace GameEngine {
 		BufferElement() {}
 
 		BufferElement(ShaderDataType type, const std::string& name, bool normalized = false)
-			: Name(name), Type(type), Size(ShaderDataTypeSize(type)), Offset(0) {}
+			: Name(name), Type(type), Size(ShaderDataTypeSize(type)), Offset(0), Normalized(normalized) {}
 
 		uint32_t GetComponentCount() const {
 			switch (Type) {
@@ -106,7 +107,6 @@ namespace GameEngine {
 		virtual const BufferLayout& GetLayout() const = 0;
 
 		static VertexBuffer* Create(float* vertices, uint32_t size);
-
 	};
 
 	class IndexBuffer {

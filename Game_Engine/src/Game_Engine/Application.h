@@ -11,6 +11,7 @@
 
 #include "Game_Engine/Renderer/Shader.h"
 #include "Game_Engine/Renderer/Buffer.h"
+#include "Game_Engine/Renderer/VertexArray.h"
 
 namespace GameEngine {
 
@@ -37,11 +38,11 @@ namespace GameEngine {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		unsigned int m_VertexArray;
-		std::unique_ptr<IndexBuffer> m_IndexBuffer;
-		std::unique_ptr<VertexBuffer> m_VertexBuffer;
-		std::unique_ptr<Shader> m_Shader;
+		std::shared_ptr<Shader> m_Shader;
+		std::shared_ptr<VertexArray> m_VertexArray;
 
+		std::shared_ptr<Shader> m_ShaderSquare;
+		std::shared_ptr<VertexArray> m_SquareVA;
 	private:
 		static Application* s_Instance;
 	};

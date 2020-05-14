@@ -83,6 +83,7 @@
     <ClInclude Include="src\Game_Engine\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Game_Engine\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Game_Engine\Core\Timestep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game_Engine\Application.cpp">

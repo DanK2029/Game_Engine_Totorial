@@ -7,6 +7,8 @@
 #include "Events/Event.h"
 #include "Game_Engine/Events/ApplicationEvent.h"
 
+#include "Game_Engine/Core/Timestep.h"
+
 #include "Game_Engine/ImGui/ImGuiLayer.h"
 
 namespace GameEngine {
@@ -33,6 +35,7 @@ namespace GameEngine {
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+		float m_LastFrameTime = 0.0f;
 
 	private:
 		static Application* s_Instance;

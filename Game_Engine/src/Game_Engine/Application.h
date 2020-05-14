@@ -9,16 +9,9 @@
 
 #include "Game_Engine/ImGui/ImGuiLayer.h"
 
-#include "Game_Engine/Renderer/Shader.h"
-#include "Game_Engine/Renderer/Buffer.h"
-#include "Game_Engine/Renderer/VertexArray.h"
-
-#include "Game_Engine/Renderer/OrthographicCamera.h"
-
-
 namespace GameEngine {
 
-	class GAME_ENGINE_API Application {
+	class Application {
 	public:
 		Application();
 		virtual ~Application();
@@ -40,14 +33,6 @@ namespace GameEngine {
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
-
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_ShaderSquare;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		OrthographicCamera m_Camera;
 
 	private:
 		static Application* s_Instance;

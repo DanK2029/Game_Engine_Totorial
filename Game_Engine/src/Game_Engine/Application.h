@@ -13,6 +13,9 @@
 #include "Game_Engine/Renderer/Buffer.h"
 #include "Game_Engine/Renderer/VertexArray.h"
 
+#include "Game_Engine/Renderer/OrthographicCamera.h"
+
+
 namespace GameEngine {
 
 	class GAME_ENGINE_API Application {
@@ -43,6 +46,9 @@ namespace GameEngine {
 
 		std::shared_ptr<Shader> m_ShaderSquare;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
+
 	private:
 		static Application* s_Instance;
 	};

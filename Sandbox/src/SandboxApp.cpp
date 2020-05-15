@@ -7,7 +7,7 @@
 class ExampleLayer : public GameEngine::Layer {
 public:
 	ExampleLayer()
-		: GameEngine::Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f), m_SquarePosition(0.0f) {
+		: GameEngine::Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f) {
 		m_VertexArray.reset(GameEngine::VertexArray::Create());
 
 		float vertices[3 * 7] = {
@@ -89,7 +89,7 @@ public:
 		squareIB.reset(GameEngine::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->AddIndexBuffer(squareIB);
 
-		std::string vertexSrcSquare = R"(
+		std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
 			layout(location = 0) in vec3 a_Position;
 			
@@ -104,32 +104,34 @@ public:
 			}
 		)";
 
-		std::string fragmentSrcSquare = R"(
+		std::string flatColorShaderFragmentSrc = R"(
 			#version 330 core
 			layout(location = 0) out vec4 color;
 			
 			in vec3 v_Position;
 
+			uniform vec4 u_Color;
+
 			void main() {
-				color = vec4(0.2, 0.2, 0.8, 1.0);
+				color = vec4(u_Color);
 			}
 		)";
 
-		m_ShaderSquare.reset(new GameEngine::Shader(vertexSrcSquare, fragmentSrcSquare));
+		m_FlatColorShader.reset(new GameEngine::Shader(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
 	}
 
 	void OnUpdate(GameEngine::Timestep ts) override {
 
 		if (GameEngine::Input::IsKeyPressed(GE_KEY_LEFT)) {
-			m_CameraPosition.x += m_CameraMoveSpeed * ts;
-		} else if (GameEngine::Input::IsKeyPressed(GE_KEY_RIGHT)) {
 			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
+		} else if (GameEngine::Input::IsKeyPressed(GE_KEY_RIGHT)) {
+			m_CameraPosition.x += m_CameraMoveSpeed * ts;
 		}
 
 		if (GameEngine::Input::IsKeyPressed(GE_KEY_UP)) {
-			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
-		} else if (GameEngine::Input::IsKeyPressed(GE_KEY_DOWN)) {
 			m_CameraPosition.y += m_CameraMoveSpeed * ts;
+		} else if (GameEngine::Input::IsKeyPressed(GE_KEY_DOWN)) {
+			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
 		}
 
 		if (GameEngine::Input::IsKeyPressed(GE_KEY_A)) {
@@ -148,15 +150,26 @@ public:
 
 		GameEngine::Renderer::BeginScene(m_Camera);
 
+		glm::vec4 redColor(0.8f, 0.2f, 0.3f, 1.0f);
+		glm::vec4 blueColor(0.2f, 0.2f, 0.8f, 1.0f);
+
+		GameEngine::MaterialRef material = new GameEngine::Material(m_FalatColorShader);
+
 		for (int y = 0; y < 20; y++) {
 			for (int x = 0; x < 20; x++) {
 				glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-				GameEngine::Renderer::Submit(m_ShaderSquare, m_SquareVA, transform);
+
+				if ((x * y + x) % 2 == 0)
+					m_FlatColorShader->UploadUniformFloat4("u_Color", redColor);
+				else 
+					m_FlatColorShader->UploadUniformFloat4("u_Color", blueColor);
+					
+				GameEngine::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
 		
-		//GameEngine::Renderer::Submit(m_Shader, m_VertexArray);
+		GameEngine::Renderer::Submit(m_Shader, m_VertexArray);
 
 		GameEngine::Renderer::EndScene();
 	}
@@ -172,7 +185,7 @@ private:
 	std::shared_ptr<GameEngine::Shader> m_Shader;
 	std::shared_ptr<GameEngine::VertexArray> m_VertexArray;
 
-	std::shared_ptr<GameEngine::Shader> m_ShaderSquare;
+	std::shared_ptr<GameEngine::Shader> m_FlatColorShader;
 	std::shared_ptr<GameEngine::VertexArray> m_SquareVA;
 
 	GameEngine::OrthographicCamera m_Camera;

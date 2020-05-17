@@ -11,7 +11,7 @@ class ExampleLayer : public GameEngine::Layer {
 public:
 	ExampleLayer()
 		: GameEngine::Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f) {
-		m_VertexArray.reset(GameEngine::VertexArray::Create());
+		m_VertexArray = GameEngine::VertexArray::Create();
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f,  0.808f, 0.416f, 0.522f, 1.0f,
@@ -68,9 +68,9 @@ public:
 			}
 		)";
 
-		m_Shader.reset(GameEngine::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = GameEngine::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
-		m_SquareVA.reset(GameEngine::VertexArray::Create());
+		m_SquareVA = GameEngine::VertexArray::Create();
 
 		float squareVertices[4 * 5] = {
 			-0.5f, -0.5f, 0.0f,  0.0f, 0.0f,
@@ -121,14 +121,14 @@ public:
 			}
 		)";
 
-		m_FlatColorShader.reset(GameEngine::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+		m_FlatColorShader = GameEngine::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 
-		m_TextureShader.reset(GameEngine::Shader::Create("assets/shaders/texture.glsl"));
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/texture.glsl");
 
 		m_Texture = GameEngine::Texture2D::Create("assets/textures/ink_cloud.png");
 
-		std::dynamic_pointer_cast<GameEngine::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<GameEngine::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+		std::dynamic_pointer_cast<GameEngine::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<GameEngine::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(GameEngine::Timestep ts) override {
@@ -174,9 +174,10 @@ public:
 				GameEngine::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
+		auto textureShader = m_ShaderLibrary.Get("texture");
 		
 		m_Texture->Bind();
-		GameEngine::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		GameEngine::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		GameEngine::Renderer::EndScene();
 	}
@@ -191,10 +192,11 @@ public:
 	}
 
 private:
+	GameEngine::ShaderLibrary m_ShaderLibrary;
 	GameEngine::Ref<GameEngine::Shader> m_Shader;
 	GameEngine::Ref<GameEngine::VertexArray> m_VertexArray;
 
-	GameEngine::Ref<GameEngine::Shader> m_FlatColorShader, m_TextureShader;
+	GameEngine::Ref<GameEngine::Shader> m_FlatColorShader;
 	GameEngine::Ref<GameEngine::VertexArray> m_SquareVA;
 
 	GameEngine::Ref<GameEngine::Texture2D> m_Texture;

@@ -21,6 +21,7 @@
 
 #include "Game_Engine/Renderer/Buffer.h"
 #include "Game_Engine/Renderer/Shader.h"
+#include "Game_Engine/Renderer/Texture.h"
 #include "Game_Engine/Renderer/VertexArray.h"
 
 #include "Game_Engine/Renderer/OrthographicCamera.h"

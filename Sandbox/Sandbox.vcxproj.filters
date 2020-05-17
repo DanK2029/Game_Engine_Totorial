@@ -11,4 +11,7 @@
   <ItemGroup>
     <Image Include="assets\textures\ink_cloud.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\shaders\texture.glsl" />
+  </ItemGroup>
 </Project>

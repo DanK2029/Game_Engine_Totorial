@@ -17,21 +17,23 @@ namespace GameEngine {
 		m_Width = width;
 		m_Height = height;
 
+		GLenum internalFormat = 0, dataFormat = 0;
+		switch (channels) {
+			case 1: dataFormat = GL_R;		internalFormat = GL_R8;		break;
+			case 2: dataFormat = GL_RG;		internalFormat = GL_RG8;	break;
+			case 3: dataFormat = GL_RGB;	internalFormat = GL_RGB8;	break;
+			case 4: dataFormat = GL_RGBA;	internalFormat = GL_RGBA8;	break;
+		}
+
+		GE_CORE_ASSERT(internalFormat & dataFormat, "Texture image format not supported");
+
 		glCreateTextures(GL_TEXTURE_2D, 1, &m_RendererID);
-		glTextureStorage2D(m_RendererID, 1, GL_RGB8, m_Width, m_Height);
+		glTextureStorage2D(m_RendererID, 1, internalFormat, m_Width, m_Height);
 
 		glTextureParameteri(m_RendererID, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTextureParameteri(m_RendererID, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-		GLenum glChannels = NULL;
-		switch (channels) {
-			case 1: glChannels = GL_R; break;
-			case 2: glChannels = GL_RG; break;
-			case 3: glChannels = GL_RGB; break;
-			case 4: glChannels = GL_RGBA; break;
-		}
-
-		glTextureSubImage2D(m_RendererID, 0, 0, 0, m_Width, m_Height, glChannels, GL_UNSIGNED_BYTE, data);
+		glTextureSubImage2D(m_RendererID, 0, 0, 0, m_Width, m_Height, dataFormat, GL_UNSIGNED_BYTE, data);
 
 		stbi_image_free(data);
 	}

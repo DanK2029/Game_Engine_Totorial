@@ -53,8 +53,8 @@ namespace GameEngine {
 			WindowData& data = *(WindowData*) glfwGetWindowUserPointer(window);
 			data.Width = width;
 			data.Height = height;
-
-			WindowResizeEvent event;
+			
+			WindowResizeEvent event(width, height);
 			data.EventCallback(event);
 		});
 

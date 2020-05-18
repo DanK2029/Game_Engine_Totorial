@@ -10,7 +10,7 @@
 class ExampleLayer : public GameEngine::Layer {
 public:
 	ExampleLayer()
-		: GameEngine::Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f) {
+		: GameEngine::Layer("Example"), m_CameraController(1280.0f / 720.0f) {
 		m_VertexArray = GameEngine::VertexArray::Create();
 
 		float vertices[3 * 7] = {
@@ -133,33 +133,16 @@ public:
 
 	void OnUpdate(GameEngine::Timestep ts) override {
 
-		if (GameEngine::Input::IsKeyPressed(GE_KEY_LEFT)) {
-			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
-		} else if (GameEngine::Input::IsKeyPressed(GE_KEY_RIGHT)) {
-			m_CameraPosition.x += m_CameraMoveSpeed * ts;
-		}
+		// Update
+		m_CameraController.OnUpdate(ts);
 
-		if (GameEngine::Input::IsKeyPressed(GE_KEY_UP)) {
-			m_CameraPosition.y += m_CameraMoveSpeed * ts;
-		} else if (GameEngine::Input::IsKeyPressed(GE_KEY_DOWN)) {
-			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
-		}
-
-		if (GameEngine::Input::IsKeyPressed(GE_KEY_A)) {
-			m_CameraRotation += m_CameraRotationSpeed * ts;
-		} else if (GameEngine::Input::IsKeyPressed(GE_KEY_D)) {
-			m_CameraRotation -= m_CameraRotationSpeed * ts;
-		}
-
+		// Render
 		GameEngine::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
 		GameEngine::RenderCommand::Clear();
-
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(m_CameraRotation);
 		
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
-		GameEngine::Renderer::BeginScene(m_Camera);
+		GameEngine::Renderer::BeginScene(m_CameraController.GetCamera());
 
 		glm::vec4 redColor(0.8f, 0.2f, 0.3f, 1.0f);
 		glm::vec4 blueColor(0.2f, 0.2f, 0.8f, 1.0f);
@@ -188,7 +171,8 @@ public:
 		ImGui::End();
 	}
 	
-	void OnEvent(GameEngine::Event& event) override {
+	void OnEvent(GameEngine::Event& e) override {
+		m_CameraController.OnEvent(e);
 	}
 
 private:
@@ -201,14 +185,7 @@ private:
 
 	GameEngine::Ref<GameEngine::Texture2D> m_Texture;
 
-	GameEngine::OrthographicCamera m_Camera;
-
-	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 2.0f;
-
-	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 180.0f;
-
+	GameEngine::OrthographicCameraController m_CameraController;
 	glm::vec3 m_SquareColor = { 0.2f, 0.3f, 0.8f };
 };
 

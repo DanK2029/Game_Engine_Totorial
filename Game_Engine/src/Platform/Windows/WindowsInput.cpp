@@ -1,7 +1,7 @@
 #include "gepch.h"
 #include "WindowsInput.h"
 
-#include "Game_Engine/Application.h"
+#include "Game_Engine/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace GameEngine {

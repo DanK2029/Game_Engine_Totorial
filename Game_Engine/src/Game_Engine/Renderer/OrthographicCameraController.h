@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Renderer/OrthographicCamera.h"
+#include "OrthographicCamera.h"
 #include "Game_Engine/Core/Timestep.h"
 
 #include "Game_Engine/Events/ApplicationEvent.h"
@@ -36,5 +36,4 @@ namespace GameEngine {
 		float m_CameraRotation = 0.0f;
 		float m_CameraTranslationSpeed = 1.0f, m_CameraRotationSpeed = 1.0f;
 	};
-
 }

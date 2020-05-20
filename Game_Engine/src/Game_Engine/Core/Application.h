@@ -3,8 +3,8 @@
 #include "Core.h"
 
 #include "Window.h"
-#include "Game_Engine/LayerStack.h"
-#include "Events/Event.h"
+#include "Game_Engine/Core/LayerStack.h"
+#include "Game_Engine/Events/Event.h"
 #include "Game_Engine/Events/ApplicationEvent.h"
 
 #include "Game_Engine/Core/Timestep.h"

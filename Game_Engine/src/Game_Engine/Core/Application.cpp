@@ -2,7 +2,7 @@
 #include "Application.h"
 
 #include "Game_Engine/Events/ApplicationEvent.h"
-#include "Game_Engine/Log.h"
+#include "Game_Engine/Core/Log.h"
 
 #include "Game_Engine/Renderer/Renderer.h"
 

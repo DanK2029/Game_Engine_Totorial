@@ -2,7 +2,7 @@
 
 #include "gepch.h"
 
-#include "Game_Engine/Core.h"
+#include "Game_Engine/Core/Core.h"
 #include "Game_Engine/Events/Event.h"
 
 namespace GameEngine {

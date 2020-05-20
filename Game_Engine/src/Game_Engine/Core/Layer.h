@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Game_Engine/Core.h"
+#include "Game_Engine/Core/Core.h"
 #include "Game_Engine/Core/Timestep.h"
 #include "Game_engine/Events/Event.h"
 

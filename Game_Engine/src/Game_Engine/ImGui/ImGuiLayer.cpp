@@ -5,7 +5,7 @@
 #include "examples/imgui_impl_glfw.h"
 #include "examples/imgui_impl_opengl3.h"
 
-#include "Game_Engine/Application.h"
+#include "Game_Engine/Core/Application.h"
 
 // TEMPORARY
 #include <GLFW/glfw3.h>
@@ -79,8 +79,5 @@ namespace GameEngine {
 		}
 	}
 
-	void ImGuiLayer::OnImGuiRender() {
-		static bool show = true;
-		ImGui::ShowDemoWindow(&show);
-	}
+	void ImGuiLayer::OnImGuiRender() {}
 }

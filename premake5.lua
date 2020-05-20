@@ -1,5 +1,6 @@
 workspace "Game_Engine"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations {
 		"Debug",
